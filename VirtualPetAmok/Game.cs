@@ -11,6 +11,7 @@ namespace VirtualPetAmok
         public string MenuChoice { get; set; }
         public bool GameFinished { get; set; }
         public Pet Pet { get; set; }
+        public Shelter Shelter { get; set; }
 
         public Game()
         {
@@ -37,6 +38,8 @@ namespace VirtualPetAmok
             string species = Console.ReadLine();
 
             Pet = new Pet(name, species);
+            Shelter = new Shelter();
+            Shelter.AddToShelter(Pet);
         }
 
         public void Interact()
@@ -45,11 +48,12 @@ namespace VirtualPetAmok
             Console.WriteLine("----------------");
             Console.WriteLine("----------------");
             Console.WriteLine("\nChoose an option to interact with your pet!");
-            Console.WriteLine("\n1. View pets info (name, species)");
+            Console.WriteLine("\n1. View pet info (name, species)");
             Console.WriteLine("2. View pets status levels");
             Console.WriteLine("3. Feed your pet");
             Console.WriteLine("4. Play with your pet");
             Console.WriteLine("5. Take pet to the doctor\n");
+            Console.WriteLine("6. View all pets in shelter\n");
             Console.WriteLine("0. Exit the game");
             Console.WriteLine("----------------");
             Console.WriteLine("----------------");
@@ -82,6 +86,11 @@ namespace VirtualPetAmok
             else if (menuChoice == "5")
             {
                 Pet.DoctorPet();
+            }
+            else if (menuChoice == "6")
+            {
+                Shelter.ShowPets();
+                Console.ReadLine();
             }
             else if (menuChoice == "0")
             {
