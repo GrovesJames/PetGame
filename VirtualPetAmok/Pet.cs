@@ -26,23 +26,23 @@ namespace VirtualPetAmok
         }
         public void FeedPet()
         {
-            Console.WriteLine("You've fed your pet!");
-            Console.WriteLine("\nPress enter to continue..");
             Hunger--;
+            Console.WriteLine("\nYou've fed your pet!");
+            Console.WriteLine("\nPress enter to continue..");
             Console.ReadLine();
         }
         public void PlayPet()
         {
-            Console.WriteLine("You've played with your pet!");
-            Console.WriteLine("\nPress enter to continue..");
             Boredom--;
+            Console.WriteLine("\nYou've played with your pet!");
+            Console.WriteLine("\nPress enter to continue..");
             Console.ReadLine();
         }
         public void DoctorPet()
         {
-            Console.WriteLine("You've taken your pet to the doctor!");
-            Console.WriteLine("\nPress enter to continue..");
             Health++;
+            Console.WriteLine("\nYou've taken your pet to the doctor!");
+            Console.WriteLine("\nPress enter to continue..");
             Console.ReadLine();
         }
     }
