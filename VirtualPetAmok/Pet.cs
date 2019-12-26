@@ -12,15 +12,18 @@ namespace VirtualPetAmok
         public string Name { get; set; }
         public string Species { get; set; }
 
-        public Pet(string name, string species)
+        public Pet()
         {
-            Name = name;
-            Species = species;
             Hunger = 5;
             Boredom = 5;
             Health = 5;
         }
 
+        public void AddPet(string name, string species)
+        {
+            Name = name;
+            Species = species;
+        }
         public void FeedPet()
         {
             Console.WriteLine("You've fed your pet!");

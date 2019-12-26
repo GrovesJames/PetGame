@@ -17,7 +17,9 @@ namespace VirtualPetAmok
         {
             foreach (Pet pet in Pets)
             {
-                Console.WriteLine("Pet name: " + pet.Name + ". Pet species: " + pet.Species + ".");
+                Console.WriteLine("---------------------");
+                Console.WriteLine("\nPet name: " + pet.Name + ". Pet species: " + pet.Species + ".\n");
+                Console.WriteLine("---------------------");
             }
         }
     }
