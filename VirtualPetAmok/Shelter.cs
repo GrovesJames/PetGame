@@ -19,23 +19,67 @@ namespace VirtualPetAmok
         {
             foreach (Pet pet in Pets)
             {
-                Console.WriteLine("---------------------");
+                Console.WriteLine("------------------------------------------");
                 Console.WriteLine("\nPet name: " + pet.Name);
                 Console.WriteLine("\nPet species: " + pet.Species + "\n");
-                Console.WriteLine("---------------------");
+                Console.WriteLine("------------------------------------------");
             }
         }
         public void ShowPetsStats()
         {
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("| Name     | Hunger | Boredom | Health |");
             foreach (Pet pet in Pets)
             {
-                Console.WriteLine("---------------------");
-                Console.WriteLine("\n" + pet.Name + " the " + pet.Species + " stats are:\n");
-                Console.WriteLine("\nHealth: " + pet.Health + "\n");
-                Console.WriteLine("\nHunger: " + pet.Hunger + "\n");
-                Console.WriteLine("\nBoredom: " + pet.Boredom + "\n");
-                Console.WriteLine("---------------------");
+                Console.WriteLine("------------------------------------------\n");
+                Console.WriteLine("| " + pet.Name + "     | " + pet.Hunger + "     | " + pet.Boredom + "      | " + pet.Health + "     |\n");
+                Console.WriteLine("------------------------------------------");
             }
+        }
+        public void FeedAllPets()
+        {
+            foreach (Pet pet in Pets)
+            {
+                pet.Hunger--;
+            }
+            Console.WriteLine("\nYou've fed all of the pets in the shelter!");
+        }
+        public void PlayAllPets()
+        {
+            foreach (Pet pet in Pets)
+            {
+                pet.Boredom--;
+            }
+            Console.WriteLine("\nYou've played with all of the pets in the shelter!");
+        }
+        public void DoctorAllPets()
+        {
+            foreach (Pet pet in Pets)
+            {
+                pet.Health++;
+            }
+            Console.WriteLine("\nYou've taken all of the pets in the shelter to the doctor!");
+        }
+        public Pet ChoosePet()
+        {
+            int petNum = 1;
+
+            Console.Clear();
+            Console.WriteLine("---------------------");
+            Console.WriteLine("---------------------");
+            Console.WriteLine("\n Select a pet:\n");
+
+            foreach (Pet pet in Pets)
+            {
+                Console.WriteLine(petNum + ". " + pet.Name + " the " + pet.Species + "\n");
+                petNum++;
+            }
+            Console.WriteLine("---------------------");
+            Console.WriteLine("---------------------");
+
+            int petChoice = Convert.ToInt32(Console.ReadLine());
+            Pet chosenPet = Pets[petChoice - 1];
+            return chosenPet;
         }
     }
 }

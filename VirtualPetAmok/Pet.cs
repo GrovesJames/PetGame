@@ -24,6 +24,21 @@ namespace VirtualPetAmok
             Name = name;
             Species = species;
         }
+        public void InfoPet()
+        {
+            Console.WriteLine("\nYour pets name is " + Name + " and its species is a " + Species + "!");
+            Console.WriteLine("\nPress enter to continue..");
+            Console.ReadLine();
+        }
+        public void StatsPet()
+        {
+            Console.WriteLine("\nYour pet status levels are:");
+            Console.WriteLine("Hunger: " + Hunger);
+            Console.WriteLine("Health: " + Health);
+            Console.WriteLine("Boredom: " + Boredom);
+            Console.WriteLine("\nPress enter to continue..");
+            Console.ReadLine();
+        }
         public void FeedPet()
         {
             Hunger--;
