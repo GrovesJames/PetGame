@@ -10,7 +10,9 @@ namespace VirtualPetAmok
         public string Species { get; set; }
         public string MenuChoice { get; set; }
         public bool GameFinished { get; set; }
-        public Pet Pet { get; set; }
+        public Pet chosenPet = new Pet();
+        public Shelter Shelter = new Shelter();
+        Pet pet = new Pet();
 
         public Game()
         {
@@ -33,10 +35,11 @@ namespace VirtualPetAmok
             Console.WriteLine("Whats the name for your pet?");
             string name = Console.ReadLine();
 
-            Console.WriteLine("Whats the species of your pet?");
+            Console.WriteLine("\nWhats the species of your pet?");
             string species = Console.ReadLine();
 
-            Pet = new Pet(name, species);
+            pet.AddPet(name, species);
+            Shelter.AddToShelter(pet);
         }
 
         public void Interact()
@@ -45,11 +48,17 @@ namespace VirtualPetAmok
             Console.WriteLine("----------------");
             Console.WriteLine("----------------");
             Console.WriteLine("\nChoose an option to interact with your pet!");
-            Console.WriteLine("\n1. View pets info (name, species)");
-            Console.WriteLine("2. View pets status levels");
+            Console.WriteLine("\n1. View pet info (name, species)");
+            Console.WriteLine("2. View pet status levels");
             Console.WriteLine("3. Feed your pet");
             Console.WriteLine("4. Play with your pet");
             Console.WriteLine("5. Take pet to the doctor\n");
+            Console.WriteLine("6. Add another pet to the shelter");
+            Console.WriteLine("7. View all pets in shelter");
+            Console.WriteLine("8. View all pet stats in shelter");
+            Console.WriteLine("9. Feed all pets in the shelter");
+            Console.WriteLine("10. Play with all pets in the shelter");
+            Console.WriteLine("11. Take all pets in the shelter to the doctor\n");
             Console.WriteLine("0. Exit the game");
             Console.WriteLine("----------------");
             Console.WriteLine("----------------");
@@ -57,35 +66,76 @@ namespace VirtualPetAmok
 
             if (menuChoice == "1")
             {
-                Console.WriteLine("Your pets name is " + Pet.Name + " and its species is a " + Pet.Species + "!");
-                Console.WriteLine("\nPress enter to continue..");
-                Console.ReadLine();
+                chosenPet = Shelter.ChoosePet();
+                chosenPet.InfoPet();
             }
             else if (menuChoice == "2")
             {
-                Console.WriteLine("Your pets status levels are:");
-                Console.WriteLine("Hunger: " + Pet.Hunger);
-                Console.WriteLine("Health: " + Pet.Health);
-                Console.WriteLine("Boredom: " + Pet.Boredom);
-                Console.WriteLine("\nPress enter to continue..");
-
-                Console.ReadLine();
+                chosenPet = Shelter.ChoosePet();
+                chosenPet.StatsPet();
             }
             else if (menuChoice == "3")
             {
-                Pet.FeedPet();
+                chosenPet = Shelter.ChoosePet();
+                chosenPet.FeedPet();
             }
             else if (menuChoice == "4")
             {
-                Pet.PlayPet();
+                chosenPet = Shelter.ChoosePet();
+                chosenPet.PlayPet();
             }
             else if (menuChoice == "5")
             {
-                Pet.DoctorPet();
+                chosenPet = Shelter.ChoosePet();
+                chosenPet.DoctorPet();
+            }
+            else if (menuChoice == "6")
+            {
+                Console.WriteLine("\nWhats the name of your new pet?");
+                string newName = Console.ReadLine();
+
+                Console.WriteLine("\nWhats the species of your new pet?");
+                string newSpecies = Console.ReadLine();
+
+                Pet newPet = new Pet();
+                newPet.AddPet(newName, newSpecies);
+                Shelter.AddToShelter(newPet);
+            }
+            else if (menuChoice == "7")
+            {
+                Console.Clear();
+                Shelter.ShowPets();
+                Console.WriteLine("\nPress enter to continue..");
+                Console.ReadLine();
+            }
+            else if (menuChoice == "8")
+            {
+                Console.Clear();
+                Shelter.ShowPetsStats();
+                Console.WriteLine("\nPress enter to continue..");
+                Console.ReadLine();
+            }
+            else if (menuChoice == "9")
+            {
+                Shelter.FeedAllPets();
+                Console.WriteLine("\nPress enter to continue..");
+                Console.ReadLine();
+            }
+            else if (menuChoice == "10")
+            {
+                Shelter.PlayAllPets();
+                Console.WriteLine("\nPress enter to continue..");
+                Console.ReadLine();
+            }
+            else if (menuChoice == "11")
+            {
+                Shelter.DoctorAllPets();
+                Console.WriteLine("\nPress enter to continue..");
+                Console.ReadLine();
             }
             else if (menuChoice == "0")
             {
-                Console.WriteLine("Thanks for playing!");
+                Console.WriteLine("\nThanks for playing!");
                 Console.ReadLine();
                 GameFinished = true;
             }
