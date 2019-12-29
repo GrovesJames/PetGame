@@ -6,17 +6,14 @@ namespace VirtualPetAmok
 {
     public class Pet
     {
-        public int Hunger { get; set; }
         public int Boredom { get; set; }
-        public int Health { get; set; }
         public string Name { get; set; }
         public string Species { get; set; }
+        public string MakeUp { get; set; }
 
         public Pet()
         {
-            Hunger = 5;
             Boredom = 5;
-            Health = 5;
         }
 
         public void AddPet(string name, string species)
@@ -26,39 +23,24 @@ namespace VirtualPetAmok
         }
         public void InfoPet()
         {
-            Console.WriteLine("\nYour pets name is " + Name + " and its species is a " + Species + "!");
-            Console.WriteLine("\nPress enter to continue..");
-            Console.ReadLine();
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("\nPet name: " + Name);
+            Console.WriteLine("\nPet species: " + Species);
+            Console.WriteLine("\nPet make up: " + MakeUp + "\n");
+            Console.WriteLine("------------------------------------------");
         }
-        public void StatsPet()
+        public virtual void StatsPet()
         {
-            Console.WriteLine("\nYour pet status levels are:");
-            Console.WriteLine("Hunger: " + Hunger);
-            Console.WriteLine("Health: " + Health);
-            Console.WriteLine("Boredom: " + Boredom);
-            Console.WriteLine("\nPress enter to continue..");
-            Console.ReadLine();
-        }
-        public void FeedPet()
-        {
-            Hunger--;
-            Console.WriteLine("\nYou've fed your pet!");
-            Console.WriteLine("\nPress enter to continue..");
-            Console.ReadLine();
         }
         public void PlayPet()
         {
             Boredom--;
-            Console.WriteLine("\nYou've played with your pet!");
-            Console.WriteLine("\nPress enter to continue..");
-            Console.ReadLine();
         }
-        public void DoctorPet()
+        public virtual void FeedPet()
         {
-            Health++;
-            Console.WriteLine("\nYou've taken your pet to the doctor!");
-            Console.WriteLine("\nPress enter to continue..");
-            Console.ReadLine();
+        }
+        public virtual void DoctorPet()
+        {
         }
     }
 }
