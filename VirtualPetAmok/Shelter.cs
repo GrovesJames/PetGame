@@ -10,55 +10,42 @@ namespace VirtualPetAmok
 
         public void AddToShelter(Pet Pet)
         {
-            Console.WriteLine("\nYou've added a new pet to the shelter!");
-            Console.WriteLine("\nPress enter to continue..");
-            Console.ReadLine();
             Pets.Add(Pet);
         }
         public void ShowPets()
         {
             foreach (Pet pet in Pets)
             {
-                Console.WriteLine("------------------------------------------");
-                Console.WriteLine("\nPet name: " + pet.Name);
-                Console.WriteLine("\nPet species: " + pet.Species + "\n");
-                Console.WriteLine("------------------------------------------");
+                pet.InfoPet();
             }
         }
         public void ShowPetsStats()
         {
-            Console.WriteLine("------------------------------------------");
-            Console.WriteLine("| Name     | Hunger | Boredom | Health |");
             foreach (Pet pet in Pets)
             {
-                Console.WriteLine("------------------------------------------\n");
-                Console.WriteLine("| " + pet.Name + "     | " + pet.Hunger + "     | " + pet.Boredom + "      | " + pet.Health + "     |\n");
-                Console.WriteLine("------------------------------------------");
+                pet.StatsPet();
             }
         }
         public void FeedAllPets()
         {
             foreach (Pet pet in Pets)
             {
-                pet.Hunger--;
+                pet.FeedPet();
             }
-            Console.WriteLine("\nYou've fed all of the pets in the shelter!");
         }
         public void PlayAllPets()
         {
             foreach (Pet pet in Pets)
             {
-                pet.Boredom--;
+                pet.PlayPet();
             }
-            Console.WriteLine("\nYou've played with all of the pets in the shelter!");
         }
         public void DoctorAllPets()
         {
             foreach (Pet pet in Pets)
             {
-                pet.Health++;
+                pet.DoctorPet();
             }
-            Console.WriteLine("\nYou've taken all of the pets in the shelter to the doctor!");
         }
         public Pet ChoosePet()
         {
@@ -80,6 +67,10 @@ namespace VirtualPetAmok
             int petChoice = Convert.ToInt32(Console.ReadLine());
             Pet chosenPet = Pets[petChoice - 1];
             return chosenPet;
+        }
+        public void AdoptPet(Pet chosenPet)
+        {
+            Pets.Remove(chosenPet);
         }
     }
 }
